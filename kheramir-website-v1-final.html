@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KHERÂMIR | Meaningful, Ethical Technology</title>
+  <meta name="description" content="KHERÂMIR creates meaningful, ethically considered digital products designed to solve real modern problems.">
+  <meta name="theme-color" content="#070707">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kheramir.com/">
+  <link rel="preload" as="image" href="kheramir-logo-clean.png" type="image/png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="KHERÂMIR">
+  <meta property="og:title" content="KHERÂMIR | Meaningful, Ethical Technology">
+  <meta property="og:description" content="Building with wisdom. Leaving a legacy. Thoughtful digital products designed around real modern needs.">
+  <meta property="og:url" content="https://kheramir.com/">
+  <meta name="twitter:card" content="summary">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070707'/%3E%3Cpath d='M18 12v40M20 32l23-20M20 32l25 20' fill='none' stroke='%23d5b66b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <style>
+    :root {
+      --black: #070707;
+      --panel: #111111;
+      --panel-light: #161616;
+      --gold: #b58a3a;
+      --gold-light: #d5b66b;
+      --gold-pale: #ead9a4;
+      --white: #f5f2ea;
+      --muted: #b8b4aa;
+      --muted-dark: #8d897f;
+      --border: rgba(181, 138, 58, 0.27);
+      --border-soft: rgba(255, 255, 255, 0.08);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      overflow-x: hidden;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      line-height: 1.7;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; }
+    button { font: inherit; }
+    ::selection { background: var(--gold); color: var(--black); }
+
+    .skip-link {
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 1000;
+      padding: 10px 14px;
+      background: var(--gold-light);
+      color: var(--black);
+      text-decoration: none;
+      transform: translateY(-150%);
+      transition: transform 0.2s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 7, 7, 0.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+    .nav-inner {
+      width: min(var(--max-width), 90%);
+      min-height: 76px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    .brand {
+      position: relative;
+      z-index: 102;
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      letter-spacing: 0.22em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-decoration: none;
+      transition: color 0.35s ease;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: -8px;
+      left: 0;
+      height: 1px;
+      background: var(--gold-light);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.35s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--gold-light); }
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+
+    .menu-button {
+      display: none;
+      position: relative;
+      z-index: 102;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--gold-light);
+      cursor: pointer;
+    }
+    .menu-button span,
+    .menu-button::before,
+    .menu-button::after {
+      content: "";
+      position: absolute;
+      left: 11px;
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+      transition: transform 0.25s ease, top 0.25s ease, opacity 0.25s ease;
+    }
+    .menu-button::before { top: 14px; }
+    .menu-button span { top: 21px; }
+    .menu-button::after { top: 28px; }
+    .menu-button[aria-expanded="true"]::before { top: 21px; transform: rotate(45deg); }
+    .menu-button[aria-expanded="true"] span { opacity: 0; }
+    .menu-button[aria-expanded="true"]::after { top: 21px; transform: rotate(-45deg); }
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: calc(100svh - 76px);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 100px 5% 88px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 14%, rgba(213, 182, 107, 0.17), transparent 30%),
+        linear-gradient(180deg, #090909 0%, var(--black) 75%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 0;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, black, transparent 82%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: min(680px, 85vw);
+      aspect-ratio: 1;
+      border: 1px solid rgba(213, 182, 107, 0.08);
+      border-radius: 50%;
+      box-shadow: 0 0 0 90px rgba(213, 182, 107, 0.025), 0 0 0 180px rgba(213, 182, 107, 0.015);
+    }
+    .hero-content { position: relative; max-width: 940px; }
+    .hero-logo {
+      width: min(560px, 74vw);
+      height: auto;
+      margin: 0 auto 18px;
+      filter: drop-shadow(0 18px 55px rgba(181, 138, 58, 0.14));
+    }
+
+    .hero-tagline {
+      max-width: 780px;
+      margin: 0 auto 20px;
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.12;
+      text-wrap: balance;
+    }
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .monogram {
+      width: 98px;
+      height: 98px;
+      margin: 0 auto 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--gold);
+      background: rgba(7, 7, 7, 0.72);
+      box-shadow: 0 0 48px rgba(181, 138, 58, 0.12);
+      transform: rotate(45deg);
+    }
+    .monogram span {
+      color: var(--gold-pale);
+      font-family: var(--serif);
+      font-size: 2.15rem;
+      transform: rotate(-45deg);
+    }
+    .eyebrow {
+      margin-bottom: 17px;
+      color: var(--gold-light);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 400; }
+    h1 {
+      margin-bottom: 24px;
+      font-size: clamp(3.4rem, 10vw, 7.8rem);
+      letter-spacing: 0.12em;
+      line-height: 0.94;
+      text-shadow: 0 16px 60px rgba(0, 0, 0, 0.35);
+    }
+    .hero h2 {
+      margin-bottom: 24px;
+      color: var(--gold-light);
+      font-size: clamp(1.35rem, 3.6vw, 2.25rem);
+      line-height: 1.25;
+    }
+    .hero-copy {
+      max-width: 735px;
+      margin: 0 auto 38px;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.12rem);
+    }
+    .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; }
+    .button {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 24px;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      background: transparent;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .button:hover,
+    .button:focus-visible {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 10px 34px rgba(181, 138, 58, 0.18);
+      transform: translateY(-2px);
+    }
+    .button-secondary { border-color: var(--border-soft); color: var(--white); background: rgba(255,255,255,0.025); }
+    .button-secondary:hover,
+    .button-secondary:focus-visible { border-color: var(--gold); }
+    .scroll-marker {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      width: 1px;
+      height: 46px;
+      overflow: hidden;
+      background: rgba(213, 182, 107, 0.18);
+    }
+    .scroll-marker::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--gold-light);
+      transform: translateY(-100%);
+      animation: scrollLine 2.2s ease-in-out infinite;
+    }
+    @keyframes scrollLine { 0% { transform: translateY(-100%); } 50%,100% { transform: translateY(100%); } }
+
+    main section { position: relative; padding: 96px 5%; }
+    .section-inner { width: min(1040px, 100%); margin: auto; }
+    .section-heading { max-width: 800px; margin-bottom: 46px; }
+    .section-heading h2 { margin-bottom: 18px; font-size: clamp(2.2rem, 5vw, 3.75rem); line-height: 1.12; }
+    .section-heading p:not(.eyebrow), .copy p { color: var(--muted); }
+    .copy { max-width: 820px; font-size: 1.03rem; }
+    .copy p + p { margin-top: 20px; }
+    .alternate {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at 90% 20%, rgba(181, 138, 58, 0.06), transparent 25%), var(--panel);
+    }
+    .mission-statement { position: relative; max-width: 930px; padding-left: 34px; border-left: 1px solid var(--gold); }
+    .mission-statement h2 { margin-bottom: 18px; font-size: clamp(2.2rem, 5.5vw, 4.2rem); line-height: 1.1; }
+    .mission-statement p { max-width: 700px; color: var(--muted); }
+
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card {
+      position: relative;
+      min-height: 265px;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, rgba(255,255,255,0.025), transparent), rgba(255,255,255,0.012);
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+    .card::before {
+      content: attr(data-number);
+      display: block;
+      margin-bottom: 56px;
+      color: var(--muted-dark);
+      font-size: 0.73rem;
+      letter-spacing: 0.16em;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 140px;
+      height: 140px;
+      border: 1px solid rgba(213, 182, 107, 0.1);
+      border-radius: 50%;
+      transition: transform 0.35s ease;
+    }
+    .card:hover { border-color: rgba(213,182,107,0.58); background: rgba(213,182,107,0.04); transform: translateY(-6px); }
+    .card:hover::after { transform: scale(1.4); }
+    .card h3 { margin-bottom: 13px; color: var(--gold-light); font-size: 1.52rem; }
+    .card p { color: var(--muted); font-size: 0.94rem; }
+
+    .products-layout { display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.1fr); align-items: start; gap: 70px; }
+    .products-layout .section-heading { position: sticky; top: 120px; margin: 0; }
+    .focus-list { border-top: 1px solid var(--border); }
+    .focus-item { display: grid; grid-template-columns: 54px 1fr; gap: 10px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+    .focus-number { color: var(--gold-light); font-family: var(--serif); }
+    .focus-item h3 { margin-bottom: 4px; font-size: 1.25rem; }
+    .focus-item p { color: var(--muted); font-size: 0.92rem; }
+
+    .commitment-panel { display: grid; grid-template-columns: minmax(0,0.85fr) minmax(0,1.15fr); gap: 70px; align-items: start; }
+    .commitment-mark {
+      min-height: 330px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle, rgba(181,138,58,0.12), transparent 55%), var(--panel);
+    }
+    .commitment-mark span { color: var(--gold-pale); font-family: var(--serif); font-size: clamp(4rem,10vw,7rem); }
+
+    .contact-box {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 40px;
+      border: 1px solid var(--border);
+      text-align: center;
+      background: radial-gradient(circle at 50% 0%, rgba(181,138,58,0.16), transparent 38%), var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .contact-box::before,
+    .contact-box::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(213,182,107,0.09);
+      transform: rotate(45deg);
+    }
+    .contact-box::before { top: -100px; left: -100px; }
+    .contact-box::after { right: -100px; bottom: -100px; }
+    .contact-box h2 { margin-bottom: 16px; font-size: clamp(2.2rem,5vw,3.4rem); }
+    .contact-box p { max-width: 620px; margin: 0 auto 28px; color: var(--muted); }
+
+    .legal-shell { border-top: 1px solid var(--border); }
+    .legal { max-width: 850px; }
+    .legal h2 { margin-bottom: 26px; font-size: clamp(2.2rem,5vw,3.2rem); }
+    .legal h3 { margin: 32px 0 9px; color: var(--gold-light); font-size: 1.3rem; }
+    .legal p { color: var(--muted); }
+    .legal a { color: var(--gold-light); }
+
+    footer { padding: 44px 5%; border-top: 1px solid var(--border); background: #050505; }
+    .footer-inner { width: min(var(--max-width),100%); margin: auto; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 30px; }
+    .footer-brand { margin-bottom: 8px; color: var(--gold-light); font-family: var(--serif); letter-spacing: 0.18em; }
+    footer p { color: var(--muted-dark); font-size: 0.82rem; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 18px; }
+    .footer-links a { color: var(--muted); font-size: 0.83rem; text-decoration: none; }
+    .footer-links a:hover,
+    .footer-links a:focus-visible { color: var(--gold-light); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s ease, transform 0.75s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: repeat(2,1fr); }
+      .products-layout,
+      .commitment-panel { grid-template-columns: 1fr; gap: 45px; }
+      .products-layout .section-heading { position: static; }
+      .commitment-mark { min-height: 250px; }
+    }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 76px; }
+      .menu-button { display: block; }
+      .nav-links {
+        position: fixed;
+        inset: 0;
+        z-index: 101;
+        min-height: 100svh;
+        padding: 110px 8% 50px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+        background: radial-gradient(circle at 90% 10%, rgba(181,138,58,0.12), transparent 30%), rgba(7,7,7,0.98);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-12px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .nav-links.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .nav-links a { font-family: var(--serif); font-size: clamp(1.6rem,8vw,2.5rem); }
+      .hero { min-height: calc(100svh - 76px); padding-top: 86px; }
+      .scroll-marker { display: none; }
+      main section { padding: 88px 5%; }
+      .section-heading { margin-bottom: 40px; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .hero-logo {
+        width: min(490px, 80vw);
+        margin-bottom: 14px;
+      }
+
+      .hero-tagline {
+        font-size: clamp(1.65rem, 8vw, 2.45rem);
+      }
+
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding-right: 6%; padding-left: 6%; }
+      h1 { letter-spacing: 0.08em; }
+      .mission-statement { padding-left: 22px; }
+      .card { min-height: 235px; }
+      .contact-box { padding: 56px 22px; }
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .button { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <nav aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="KHERÂMIR home">KHERÂMIR</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-menu" aria-label="Open navigation menu"><span></span></button>
+      <div class="nav-links" id="primary-menu">
+        <a href="#about">About</a>
+        <a href="#principles">Principles</a>
+        <a href="#products">What We Build</a>
+        <a href="#contact">Contact</a>
+        <a href="#privacy">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <p class="eyebrow reveal">Useful technology. Thoughtfully created.</p>
+      <img
+        class="hero-logo reveal reveal-delay-1"
+        src="kheramir-logo-clean.png"
+        alt="KHERÂMIR — Building with Wisdom. Leaving a Legacy."
+        width="1135"
+        height="1020"
+        fetchpriority="high"
+      >
+      <h1 class="visually-hidden">KHERÂMIR — Meaningful, Ethical Technology</h1>
+      <h2 class="hero-tagline reveal reveal-delay-2">
+        Meaningful software. Ethical innovation. Lasting impact.
+      </h2>
+      <p class="hero-copy reveal reveal-delay-2">
+        KHERÂMIR develops thoughtful digital products designed to solve
+        real problems with clarity, purpose and long-term value.
+      </p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a class="button" href="#about">Discover our purpose</a>
+        <a class="button button-secondary" href="#products">Explore our focus</a>
+      </div>
+    </div>
+    <div class="scroll-marker" aria-hidden="true"></div>
+  </header>
+
+  <main id="main-content">
+    <section id="about">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About KHERÂMIR</p>
+          <h2>Technology should serve people with purpose.</h2>
+        </div>
+        <div class="copy reveal">
+          <p>Technology increasingly shapes how we live, work, learn and connect. At KHERÂMIR, we believe software should do more than simply function. It should be useful, understandable and genuinely beneficial.</p>
+          <p>We develop applications and digital services that address real needs while considering privacy, accessibility, trust and long-term wellbeing from the outset.</p>
+          <p>Our aim is not to create technology for its own sake, but to build thoughtful products that make everyday life clearer, easier or more meaningful.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alternate" id="mission">
+      <div class="section-inner">
+        <div class="mission-statement reveal">
+          <p class="eyebrow">Our Mission</p>
+          <h2>To create useful, ethical technology that improves everyday life.</h2>
+          <p>Every product begins with one question: will this genuinely help the people it is designed for?</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="principles">
+      <div class="section-inner">
+        <div class="section-heading reveal"><p class="eyebrow">Our Principles</p><h2>How we approach every product.</h2></div>
+        <div class="grid">
+          <article class="card reveal" data-number="01"><h3>Wisdom</h3><p>We favour careful decisions, clear reasoning and long-term thinking over unnecessary speed.</p></article>
+          <article class="card reveal reveal-delay-1" data-number="02"><h3>Purpose</h3><p>Every application should address a genuine need and provide practical value.</p></article>
+          <article class="card reveal reveal-delay-2" data-number="03"><h3>Ethics</h3><p>Privacy, transparency, accessibility and user wellbeing are considered throughout development.</p></article>
+          <article class="card reveal reveal-delay-3" data-number="04"><h3>Legacy</h3><p>We aim to create trusted products that continue to provide value over time.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alternate" id="products">
+      <div class="section-inner products-layout">
+        <div class="section-heading reveal">
+          <p class="eyebrow">What We Build</p>
+          <h2>Digital products designed around real modern needs.</h2>
+          <p>Our first applications are currently in development. We focus on areas where thoughtful technology can provide practical, responsible and lasting value.</p>
+        </div>
+        <div class="focus-list">
+          <article class="focus-item reveal"><span class="focus-number">01</span><div><h3>Practical productivity tools</h3><p>Simple systems that help people organise, decide and act.</p></div></article>
+          <article class="focus-item reveal"><span class="focus-number">02</span><div><h3>Responsible artificial intelligence</h3><p>AI used with restraint, clarity and meaningful human benefit.</p></div></article>
+          <article class="focus-item reveal"><span class="focus-number">03</span><div><h3>Education and personal development</h3><p>Tools that support learning, growth and informed choices.</p></div></article>
+          <article class="focus-item reveal"><span class="focus-number">04</span><div><h3>Wellbeing and everyday support</h3><p>Useful services designed around real routines and needs.</p></div></article>
+          <article class="focus-item reveal"><span class="focus-number">05</span><div><h3>Useful business software</h3><p>Focused digital products that remove friction from operations.</p></div></article>
+          <article class="focus-item reveal"><span class="focus-number">06</span><div><h3>Accessible consumer applications</h3><p>Clear, inclusive products people can understand and trust.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="commitment">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Our Commitment</p>
+          <h2>Responsible design is part of the product.</h2>
+        </div>
+        <div class="copy reveal">
+          <p>As technology becomes more closely integrated into daily life, developers carry a responsibility to respect the people who use their products.</p>
+          <p>KHERÂMIR seeks to minimise unnecessary data collection, communicate clearly, design for accessibility and assess the wider consequences of the technology we create.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alternate" id="vision">
+      <div class="section-inner">
+        <div class="mission-statement reveal">
+          <p class="eyebrow">Our Vision</p>
+          <h2>To become one of the world’s most trusted creators of ethical technology.</h2>
+          <p>We aim to build products that improve everyday life while remaining thoughtful, responsible and enduring.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="founded">
+      <div class="section-inner">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Founded with Purpose</p>
+          <h2>Built for lasting value, not short-term attention.</h2>
+        </div>
+        <div class="copy reveal">
+          <p>KHERÂMIR was founded on a simple belief: technology should improve people’s lives, not distract from them.</p>
+          <p>We build digital products guided by wisdom, responsibility and long-term thinking. Every application begins with a genuine problem and is designed with lasting value in mind.</p>
+          <p>Our ambition is to create products that people trust today and remember tomorrow.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="alternate" id="contact">
+      <div class="section-inner">
+        <div class="contact-box reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Speak with KHERÂMIR</h2>
+          <p>For business, development or general enquiries, contact us by email.</p>
+          <a class="button" href="mailto:help@kheramir.com">help@kheramir.com</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="legal-shell">
+      <section id="privacy">
+        <div class="section-inner legal reveal">
+          <p class="eyebrow">Privacy Notice</p>
+          <h2>Your privacy matters.</h2>
+          <p>This website is operated by KHERÂMIR Ltd. This introductory website does not use a contact form, create user accounts, process payments or intentionally collect personal information directly from visitors.</p>
+          <h3>Email enquiries</h3><p>When you contact us by email, we receive the information you choose to provide, such as your name, email address and the contents of your message. We use this information to read, manage and respond to your enquiry.</p>
+          <h3>How long information is kept</h3><p>Enquiry correspondence is kept only for as long as reasonably necessary to respond, maintain appropriate business records or meet applicable legal obligations.</p>
+          <h3>Sharing information</h3><p>We do not sell personal information. Information may be processed by service providers that support our email or website infrastructure, or disclosed where required by law.</p>
+          <h3>Cookies and analytics</h3><p>This version of the website does not intentionally use advertising cookies or third-party analytics. Essential technical services used to deliver and secure the website may process limited connection information such as IP addresses and request data.</p>
+          <h3>Your rights</h3><p>Depending on the circumstances, UK data protection law may give you rights relating to your personal information, including rights of access, correction, erasure, restriction or objection.</p>
+          <h3>Contact</h3><p>Privacy enquiries may be sent to <a href="mailto:help@kheramir.com">help@kheramir.com</a>.</p>
+        </div>
+      </section>
+
+      <section class="alternate" id="terms">
+        <div class="section-inner legal reveal">
+          <p class="eyebrow">Website Terms</p>
+          <h2>Use of this website.</h2>
+          <h3>Informational purpose</h3><p>This website provides general information about KHERÂMIR Ltd, its principles and products currently under development.</p>
+          <h3>Accuracy and availability</h3><p>We aim to keep the website accurate and available, but information may change and uninterrupted availability cannot be guaranteed.</p>
+          <h3>Intellectual property</h3><p>Unless otherwise stated, the KHERÂMIR name, branding, written content and original materials displayed on this website are owned by or licensed to KHERÂMIR.</p>
+          <h3>Future applications</h3><p>Individual KHERÂMIR applications and services may have their own privacy notices, support information and terms of use.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">KHERÂMIR</div>
+        <p>© 2026 KHERÂMIR Ltd. All rights reserved.<br>
+        Building with Wisdom. Leaving a Legacy.<br>
+        Registered in England &amp; Wales · Company No. 17327509<br>
+        Established 2026</p>
+      </div>
+      <div class="footer-links"><a href="#privacy">Privacy</a><a href="#terms">Terms</a><a href="mailto:help@kheramir.com">Contact</a><a href="#home">Back to top</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const menu = document.querySelector('.nav-links');
+    const menuLinks = document.querySelectorAll('.nav-links a');
+
+    function closeMenu() {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Open navigation menu');
+      menu.classList.remove('is-open');
+      document.body.classList.remove('menu-open');
+    }
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+      menu.classList.toggle('is-open', !isOpen);
+      document.body.classList.toggle('menu-open', !isOpen);
+    });
+
+    menuLinks.forEach(link => link.addEventListener('click', closeMenu));
+    window.addEventListener('resize', () => { if (window.innerWidth > 760) closeMenu(); });
+
+    const revealElements = document.querySelectorAll('.reveal');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach(element => element.classList.add('is-visible'));
+    } else {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+      revealElements.forEach(element => observer.observe(element));
+    }
+  </script>
+</body>
+</html>
